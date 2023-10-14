@@ -1,0 +1,51 @@
+<div class="container">
+    <form>
+        <div class="container-fluid">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Text</label>
+                <textarea type="text" [(ngModel)]="tekst" name="tekst" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="container-fluid my-5">
+            <div class="form-group col-md-2">
+                <label for="customRange1" class="form-label col-md-12">Min confidence: {{min_confidence}} </label>
+                <label class="col-md-1">0</label>
+                <input type="range" [(ngModel)]="min_confidence" name="min_confidence" class="offset-md-1 col-md-8" min="0" max="1" step="0.01" id="customRange1">
+                <label class="offset-md-1">1</label>
+            </div>
+        </div>
+        <div class="container-fluid mb-4">
+            <div class="form-check">
+                <input class="form-check-input" [(ngModel)]="image" name="image" type="checkbox">
+                <label class="form-check-label" for="flexCheckDefault">
+                Image
+                </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" [(ngModel)]="abstract" name="abstract" type="checkbox">
+            <label class="form-check-label" for="flexCheckChecked">
+                Abstract
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" [(ngModel)]="categories" name="categories" type="checkbox">
+            <label class="form-check-label" for="flexCheckDefault">
+                Categories
+            </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="entityExtraction()">Submit</button>
+    </form>
+</div>
+<!-- <div>
+    <div *ngFor="let entity of entities" class="mb-2">
+      <p>{{ entity.title }}</p>
+      <p>{{ entity.abstract}}</p>
+      <p>{{entity.categories}}</p>
+      <img src={{entity.image.thumbnail}}>
+    </div>
+</div> -->
+
+<div>
+    <app-entity *ngFor="let entity of entities" [entity]=entity></app-entity>
+</div>

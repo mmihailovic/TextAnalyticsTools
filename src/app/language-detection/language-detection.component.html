@@ -1,0 +1,22 @@
+<div class="container">
+    <form>
+        <div class="container-fluid">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Text</label>
+                <textarea type="text" [(ngModel)]="tekst" name="tekst" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" [(ngModel)]="clean" name="clean" type="checkbox">
+                <label class="form-check-label" for="flexCheckDefault">
+                Clean
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="languageDetection()">Submit</button>
+        </div>
+    </form>
+</div>
+<div>
+    <div *ngFor="let lang of languages">
+        <p>{{lang.lang}}:{{ lang.confidence}}</p>
+    </div>
+</div>

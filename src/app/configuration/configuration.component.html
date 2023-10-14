@@ -1,0 +1,13 @@
+<div class="container">
+    <form>
+        <div class="container-fluid">
+            <div class="form-group col-md-4 mb-3">
+                <label for="exampleFormControlTextarea1">Token</label>
+                <input type="text" [readonly]="isTokenAvailable() && !edit" [(ngModel)]="token" name="token" class="form-control" value="123">
+            </div>
+            <button class="btn btn-primary col-md-1" (click)="setToken()">Save</button>
+            <button class="btn btn-success col-md-1" (click)="edit = !edit">Edit</button>
+            <button class="btn btn-danger col-md-1" (click)="deleteToken()">Delete</button>
+        </div>
+    </form>
+</div>

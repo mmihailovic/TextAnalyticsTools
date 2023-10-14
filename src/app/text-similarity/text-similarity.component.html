@@ -1,0 +1,18 @@
+<div class="container">
+    <form>
+        <div class="container-fluid">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Text 1</label>
+                <textarea type="text" [(ngModel)]="tekst1" name="tekst1" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Text 2</label>
+                <textarea type="text" [(ngModel)]="tekst2" name="tekst2" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="textSimilarity()">Submit</button>
+    </form>
+</div>
+<div>
+    <p *ngIf="similarity >= 0">{{similarity | percentage}}</p>
+</div>
