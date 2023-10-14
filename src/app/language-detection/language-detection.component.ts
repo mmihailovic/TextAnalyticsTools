@@ -1,6 +1,7 @@
-import { Component,Input } from '@angular/core';
-import { Entity, Languages } from '../entity';
+import { Component } from '@angular/core';
+import { Languages } from '../entity';
 import { HttpClient } from '@angular/common/http';
+import { HistoryService } from '../history.service';
 
 @Component({
   selector: 'app-language-detection',
@@ -14,7 +15,7 @@ export class LanguageDetectionComponent {
 
   private readonly apiUrl = 'https://api.dandelion.eu/datatxt/li/v1/?'
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private historyService:HistoryService) {}
 
   languageDetection(): void {
     let link: string = 'text='+this.tekst+'&clean='+this.clean+'&token='+localStorage.getItem("token");
@@ -22,5 +23,7 @@ export class LanguageDetectionComponent {
       console.log(data.detectedLangs);
       this.languages = data.detectedLangs;
     });
+    const datum:any= new Date();
+    this.historyService.addHistory(datum,"GET",this.apiUrl+link);
   }
 }

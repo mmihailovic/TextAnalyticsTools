@@ -19,3 +19,15 @@ export class Languages {
     lang: string = '';
     confidence: number = 0;
 }
+
+export class History {
+    dateTime: string = '';
+    method: string = '';
+    url: string = '';
+
+    constructor(dateTime: string, method: string, url: string) {
+        this.dateTime = dateTime;
+        this.method = method;
+        this.url = url;
+    }
+}

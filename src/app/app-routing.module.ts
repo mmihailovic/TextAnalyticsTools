@@ -5,6 +5,7 @@ import { EntityExtractionComponent } from './entity-extraction/entity-extraction
 import { LanguageDetectionComponent } from './language-detection/language-detection.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 import { TextSimilarityComponent } from './text-similarity/text-similarity.component';
+import { HistoryComponent } from './history/history.component';
 import { authGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path:"text-similarity",
     component:TextSimilarityComponent,
+    canActivate:[authGuard]
+  },
+  {
+    path:"history",
+    component: HistoryComponent,
     canActivate:[authGuard]
   }
 ];

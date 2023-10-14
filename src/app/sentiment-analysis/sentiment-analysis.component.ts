@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { HistoryService } from '../history.service';
 
 @Component({
   selector: 'app-sentiment-analysis',
@@ -17,7 +18,7 @@ export class SentimentAnalysisComponent {
 
   private readonly apiUrl = 'https://api.dandelion.eu/datatxt/sent/v1/?'
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private historyService: HistoryService) {}
 
   sentimentAnalysis(): void {
     let link: string = 'text='+this.tekst+'&token='+localStorage.getItem("token");
@@ -40,6 +41,8 @@ export class SentimentAnalysisComponent {
 
       this.color = `rgba(${red}, ${green}, 50)`;
     });
+    const datum:any= new Date();
+    this.historyService.addHistory(datum,"GET",this.apiUrl+link);
   }
 
 }

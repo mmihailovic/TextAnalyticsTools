@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { Entity } from '../entity';
 import { HttpClient } from '@angular/common/http';
+import { HistoryService } from '../history.service';
 
 @Component({
   selector: 'app-entity-extraction',
@@ -18,7 +19,7 @@ export class EntityExtractionComponent{
 
   private readonly apiUrl = 'https://api.dandelion.eu/datatxt/nex/v1/?'
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private historyService: HistoryService) { }
 
   entityExtraction(): void {
     let link: string = 'text='+this.tekst+'&token='+localStorage.getItem("token")+"&min_confidence="+this.min_confidence;
@@ -33,6 +34,8 @@ export class EntityExtractionComponent{
     this.httpClient.get(this.apiUrl+link).subscribe((entities: any) => {
       this.entities = entities.annotations;
     });
+    const datum:any= new Date();
+    this.historyService.addHistory(datum,"GET",this.apiUrl+link);
   }
 
 }

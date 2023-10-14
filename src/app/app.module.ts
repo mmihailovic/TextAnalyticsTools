@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { PercentagePipe } from './percentage.pipe';
 import { EntityComponent } from './entity/entity.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EntityComponent } from './entity/entity.component';
     SentimentAnalysisComponent,
     AppComponent,
     PercentagePipe,
-    EntityComponent
+    EntityComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
